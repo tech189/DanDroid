@@ -78,6 +78,13 @@ class DanDroid(discord.Client):
                 if "hello" in message.content[len(self.prefix):]:
                     await self.send_message(message, "hello, {0}! nice to meet you!".format(str(message.author)[:-5]))
 
+        elif "<@569503356473704460>" in message.content:
+            response = random.choice(phrases.mentioned)
+            await self.send_message(message, response)
+        
+        elif "<@147076318889115658>" in message.content:
+            await self.send_message(message, "got there first!")
+
         else:
             if self.awake == False:
                 return
@@ -90,10 +97,7 @@ class DanDroid(discord.Client):
                     if random.randint(0, 100) < 10:
                         response = random.choice(phrases.generic)
                         await self.send_message(message, response)
-                
-                
-        
-        
+
 
 logger = logging.getLogger()
 handler = logging.FileHandler("dandroid.log", mode="a")
